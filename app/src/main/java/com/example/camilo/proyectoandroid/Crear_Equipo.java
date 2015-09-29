@@ -6,8 +6,12 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Contacts;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,9 +22,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+
+
+
 public class Crear_Equipo extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
+    private static final int PICK_CONTACT = 1234;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -54,6 +62,39 @@ public class Crear_Equipo extends Activity
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                 .commit();
     }
+
+
+
+
+
+    public void Contactos(View View){
+        Intent intent = new Intent(Intent.ACTION_PICK, Contacts.People.CONTENT_URI);
+        startActivityForResult(intent, PICK_CONTACT);
+    }
+
+
+
+    public void onActivityResult(int reqCode, int resultCode, Intent data) {
+        super.onActivityResult(reqCode, resultCode, data);
+        switch (reqCode) {
+            case (PICK_CONTACT):
+                if (resultCode == Activity.RESULT_OK) {
+                    Uri contactData = data.getData();
+                    Cursor c = managedQuery(contactData, null, null, null, null);
+                    if (c.moveToFirst()) {
+                        String name = c.getString(c.getColumnIndexOrThrow(Contacts.People.NAME))+":
+                        c.getInt(c.getColumnIndexOrThrow(Contacts.People.NUMBER));
+                        txtContacts1.setText(name);
+                    }
+                }
+                break;
+        }}
+
+
+
+
+
+
 
     public void onSectionAttached(int number) {
         switch (number) {

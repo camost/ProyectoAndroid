@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.camilo.proyectoandroid" >
+    package="com.example.camilo.proyectoandroid"
+    >
 
     <application
         android:allowBackup="true"
@@ -25,5 +26,5 @@
             android:label="@string/title_activity_equipos__creados" >
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 </manifest>
