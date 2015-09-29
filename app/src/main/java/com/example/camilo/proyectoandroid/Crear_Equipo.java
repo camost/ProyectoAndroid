@@ -20,6 +20,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.EdgeEffect;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -84,7 +86,8 @@ public class Crear_Equipo extends Activity
                     if (c.moveToFirst()) {
                         String name = c.getString(c.getColumnIndexOrThrow(Contacts.People.NAME))+":
                         c.getInt(c.getColumnIndexOrThrow(Contacts.People.NUMBER));
-                        txtContacts1.setText(name);
+                        EditText.setText(name);
+
                     }
                 }
                 break;
